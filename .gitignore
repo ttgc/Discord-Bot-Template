@@ -122,3 +122,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Custom ignored files
+__cache__/
+__deprecated__/
+*.log
+config.*.json
