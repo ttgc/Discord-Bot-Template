@@ -18,7 +18,7 @@ class BotManage(commands.Cog, name="Bot Management", command_attrs=dict(hidden=T
         self.logger.log(logging.DEBUG+1, "running debug instruction : %s", arg.replace("```python", "").replace("```", ""))
         exec(arg.replace("```python", "").replace("```", ""))
 
-    @commands.check(check_botmanager)
+    @commands.check(check_botowner)
     @commands.command()
     async def shutdown(self, ctx):
         await ctx.message.channel.send("You are requesting a shutdown, please ensure that you want to performe it by typing `confirm`")
