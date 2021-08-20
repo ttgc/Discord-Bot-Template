@@ -1,5 +1,5 @@
 {
-    "token": "put your discord token here"
+    "token": "put your discord token here",
     "version": "0.0.0",
     "logs": {
         "directory": "Logs",
