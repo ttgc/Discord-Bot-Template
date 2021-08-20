@@ -3,7 +3,9 @@
 
 from src.discord.checks import *
 from discord.ext import commands
-import logging, sys, asyncio
+import logging
+import sys
+import asyncio
 
 class BotManage(commands.Cog, name="Bot Management", command_attrs=dict(hidden=True)):
     def __init__(self, bot, logger):
@@ -13,8 +15,8 @@ class BotManage(commands.Cog, name="Bot Management", command_attrs=dict(hidden=T
     @commands.check(check_botowner)
     @commands.command(aliases=["eval"])
     async def debug(self, ctx, *, arg):
-        self.logger.log(logging.DEBUG+1, "running debug instruction : %s", arg.replace("```python","").replace("```",""))
-        exec(arg.replace("```python","").replace("```",""))
+        self.logger.log(logging.DEBUG+1, "running debug instruction : %s", arg.replace("```python", "").replace("```", ""))
+        exec(arg.replace("```python", "").replace("```", ""))
 
     @commands.check(check_botmanager)
     @commands.command()
@@ -29,4 +31,3 @@ class BotManage(commands.Cog, name="Bot Management", command_attrs=dict(hidden=T
             self.logger.warning("Shutdown requested by %s", str(ctx.message.author))
             await self.bot.logout()
             sys.exit(0)
-

@@ -5,10 +5,7 @@
 import discord
 from discord.ext import commands
 import asyncio
-import logging
 import traceback
-import os
-import sys
 
 # import custom libs
 from src.setup.config import *
@@ -21,10 +18,6 @@ from src.discord.cogs.BotManage import *
 global logger
 logger = initlogs()
 
-# Check bot directories and files
-initdirs(logger)
-checkfiles(logger)
-
 # Initialize bot status
 global statut
 statut = discord.Game(name=Config()["discord"]["default-game"])
@@ -34,12 +27,12 @@ global TOKEN
 TOKEN = Config()["token"]
 
 # Get prefix function
-def get_prefix(bot,message):
+def get_prefix(bot, message):
     return Config()["discord"]["default-prefix"]
 
 # Initialize client
 global client
-client = discord.ext.commands.Bot(get_prefix, case_insensitive=True, activity=statut, help_command=Help(), intents=discord.Intents.all())
+client = discord.ext.commands.Bot(get_prefix, case_insensitive=True, activity=statut, intents=discord.Intents.all())
 
 # Global checks
 @client.check
@@ -54,7 +47,7 @@ async def on_command_error(ctx, error):
     global logger
     msg = f"error occured: ```{error}```"
 
-    if isinstance(error,commands.CheckFailure): return
+    if isinstance(error, commands.CheckFailure): return
     else: logger.warning(error)
     await ctx.message.channel.send(msg)
 

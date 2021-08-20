@@ -1,7 +1,9 @@
 #!usr/bin/env python3
 #-*-coding:utf-8-*-
 
-import json, os, sys
+import json
+import os
+import sys
 from deepmerge import always_merger
 
 class Config:

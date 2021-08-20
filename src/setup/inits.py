@@ -1,7 +1,8 @@
 #!usr/bin/env python3
 #-*-coding:utf-8-*-
 
-import logging, os
+import logging
+import os
 from src.setup.config import *
 
 class DebugFilter(logging.Filter):
